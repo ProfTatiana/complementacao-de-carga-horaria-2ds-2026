@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conecta Baía | Guaratuba</title>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+<a class="brand" href="#vitrine">Conecta <strong>Baía</strong></a>
+<nav aria-label="Menu principal">
+<a href="#vitrine">Vitrine</a><a href="#rota">Rota</a><a href="#reservas">Reservas</a><a href="#produtor">Produtor</a>
+</nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+<p class="eyebrow">GUARATUBA · LITORAL DO PARANÁ</p>
+<h1>Da baía<br>à sua mesa.</h1>
+<p>Reserve ostras e pescados de produtores locais ou agende uma visita à Rota das Ostras.</p>
+<a class="button" href="#vitrine">Explorar a vitrine ↓</a>
+</div></section>
+<div class="wrap">
+<p class="demo">Protótipo escolar · Use apenas dados fictícios. As operações ficam neste navegador.</p>
+<section id="vitrine" aria-labelledby="titulo-vitrine">
+<h2 id="titulo-vitrine">Vitrine da baía</h2>
+<div class="filters">
+<label>Buscar<input id="busca" type="search" placeholder="Ex.: ostras ou camarão"></label>
+<label>Categoria<select id="categoria"></select></label>
+<label>Comunidade<select id="comunidade"></select></label>
+<label class="check"><input id="disponivel" type="checkbox"> Disponíveis hoje</label>
+</div>
+<p id="resultado" class="muted" aria-live="polite"></p>
+<div class="grid" id="catalogo"></div>
+</section>
+<section id="conta"><h2>Perfil de demonstração</h2>
+<div class="surface"><form id="perfilForm" class="fields">
+<label>Perfil ativo<select name="perfil" id="perfil"></select></label>
+<button>Entrar no perfil</button>
+</form>
+<details><summary>Cadastrar perfil fictício</summary>
+<form id="cadastroForm" class="fields">
+<label>Nome de exibição<input name="nome" required maxlength="80"></label>
+<label>Tipo<select name="tipo" id="tipo"><option value="cliente">Cliente</option><option value="produtor">Produtor</option></select></label>
+<label id="campoComunidade" hidden>Comunidade<select name="comunidade" id="comunidadePerfil"></select></label>
+<button>Cadastrar e entrar</button>
+</form></details></div></section>
+<section id="reservas"><h2>Minhas reservas</h2>
+<div class="surface"><h3>Carrinho</h3><div id="carrinho"></div>
+<form id="reservaForm">
+<div id="retiradas" class="stack"></div>
+<p class="total">Total <strong id="total"></strong></p>
+<button id="enviarReserva">Gerar reserva</button>
+</form></div>
+<h3>Histórico</h3><div id="historico" class="stack"></div>
+</section>
+<section id="rota"><h2>Rota gastronômica</h2>
+<div class="route" id="mapa" role="group" aria-label="Mapa esquemático das comunidades"></div>
+<p class="muted">Mapa esquemático · Pontos de retirada e visitação do protótipo.</p>
+<div id="paradas" class="grid"></div></section>
+<section id="produtor"><h2>Painel do produtor</h2>
+<p id="avisoProdutor"></p>
+<div id="painel" hidden>
+<form id="loteForm" class="surface">
+<h3>Novo lote ou visita</h3><div class="fields">
+<label>Nome<input name="nome" maxlength="100" required></label>
+<label>Categoria<select name="categoria" id="categoriaLote"></select></label>
+<label>Unidade<select name="unidade" id="unidade"></select></label>
+<label>Preço por unidade (R$)<input name="preco" type="number" min="0" max="999999" step=".01" required></label>
+<label>Estoque ou vagas<input name="estoque" type="number" min="0" max="9999" step="1" required></label>
+<label id="campoColheita">Data da colheita ou pesca<input name="colheita" type="date" required></label>
+<label>Ponto de retirada ou encontro<input name="ponto" maxlength="150" required></label>
+<label>Foto ilustrativa (URL HTTPS opcional)<input name="foto" type="url" maxlength="500" placeholder="https://…"></label>
+</div><button>Cadastrar na vitrine</button></form>
+<h3>Meus lotes e visitas</h3><div id="lotes" class="stack"></div>
+<h3>Reservas recebidas</h3><div id="recebidas" class="stack"></div>
+</div></section>
+</div>
+</main>
+<footer><div class="wrap">Conecta Baía · Projeto integrador de Desenvolvimento de Sistemas</div></footer>
+<div id="mensagem" role="status" aria-live="polite"></div>
+<template id="cartao">
+<article class="card"><img alt="" width="480" height="270"><div class="card-body">
+<p class="tag" data-categoria></p><h3 data-nome></h3><p data-produtor></p><p class="muted" data-origem></p>
+<p class="muted" data-estoque></p><p class="muted" data-ponto></p>
+<div class="card-bottom"><strong data-preco></strong><button type="button"></button></div>
+</div></article>
+</template>
+</body>
+</html>
